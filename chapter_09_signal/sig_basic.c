@@ -18,6 +18,7 @@ int main()
     memset(&sa_usr2, 0, sizeof(struct sigaction));
     sa_usr2.sa_handler = sa_handler_usr;
     sigemptyset(&sa_usr2.sa_mask);
+    sa_usr2.sa_flags = SA_NODEFER;
     sigaction(SIGUSR1, &sa_usr1, NULL);
     sigaction(SIGUSR2, &sa_usr2, NULL);
     printf("[MAIN] SIGNAL-Handler installed, pid(%d)\n", getpid());
